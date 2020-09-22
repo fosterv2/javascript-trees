@@ -30,17 +30,27 @@ function printTree(root) {
     const nodeArr = collectNodes(root)
     const width = nodeArr[nodeArr.length - 1].depth
     const whitespace = "  "
-    let string = whitespace.repeat(width) + nodeArr[0].name + "\n"
-    for (let i = 1; i < nodeArr.length - 1; i++) {
-        if (nodeArr[i - 1].depth < nodeArr[i].depth) {
-            string += whitespace.repeat(width - nodeArr[i].depth)
+    let string = whitespace.repeat(width)
+    let lines = ""
+    for (let i = 0; i < nodeArr.length; i++) {
+        const node = nodeArr[i]
+        if (nodeArr[i - 1] && nodeArr[i - 1].depth < node.depth) {
+            string += whitespace.repeat(width - node.depth)
         }
-        string += nodeArr[i].name
-        if (nodeArr[i + 1].depth > nodeArr[i].depth) {
-            string += "\n"
+        string += ` ${nodeArr[i].name} `
+        if (node.left) {
+            lines += "/ "
+        }
+        if (node.right) {
+            lines += "\\ "
+        }
+        if (nodeArr[i + 1] && nodeArr[i + 1].depth > node.depth) {
+            string += "\n" + whitespace.repeat(width - node.depth) + lines + "\n"
+            lines = ""
+        } else {
+            string += whitespace.repeat(width - node.depth)
         }
     }
-    string += nodeArr[nodeArr.length - 1].name
     console.log(string)
 }
 
