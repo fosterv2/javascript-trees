@@ -1,0 +1,10 @@
+{
+  "name": "javascript-trees",
+  "version": "1.0.0",
+  "description": "Practice for writing tree functions",
+  "main": "index.js",
+  "devDependencies": {},
+  "dependencies": {
+    "mocha": "^8.1.3"
+  }
+}
