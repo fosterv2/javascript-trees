@@ -1,42 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Introduction to the DOM Lab</title>
-</head>
-<body>
-  <h1>My HTML adventure</h1>
-  <p>
-    We're writing <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a> markup to display in our <strong>browser</strong>.
-    We're basically telling computers what to do. <em>Neat!</em>
-  </p>
-  <table>
-    <thead>
-      <tr>
-        <th>Element name</th>
-        <th>Display value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>h1</td>
-        <td>block</td>
-      </tr>
-      <tr>
-        <td>p</td>
-        <td>block</td>
-      </tr>
-      <tr>
-        <td>strong</td>
-        <td>inline</td>
-      </tr>
-      <tr>
-        <td>em</td>
-        <td>inline</td>
-      </tr>
-    </tbody>
-  </table>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Mocha Tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+  </head>
+  <body>
+    <div id="mocha"></div>
+
+    <script src="https://unpkg.com/chai/chai.js"></script>
+    <script src="https://unpkg.com/mocha/mocha.js"></script>
+
+    <script class="mocha-init">
+      mocha.setup('bdd');
+      mocha.checkLeaks();
+    </script>
+
+    <script src="index.js"></script>
+    <script src="test/test.js"></script>
+
+    <script class="mocha-exec">
+      mocha.run();
+    </script>
+  </body>
 </html>
