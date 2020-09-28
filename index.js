@@ -1,9 +1,9 @@
-function makeNode(name, leftNode, rightNode) {
-    return { name, left: leftNode, right: rightNode }
+function makeNode(data, leftNode, rightNode) {
+    return { data, left: leftNode, right: rightNode }
 }
 
 function printBranches(root) {
-    console.log(root.name)
+    console.log(root.data)
     if (root.left) {
         printBranches(root.left)
     }
@@ -16,7 +16,7 @@ function printLevels(root) {
     const queue = [root]
     while (queue.length > 0) {
         node = queue.shift()
-        console.log(node.name)
+        console.log(node.data)
         if (node.left) {
             queue.push(node.left)
         }
@@ -37,7 +37,7 @@ function printTree(root) {
         if (nodeArr[i - 1] && nodeArr[i - 1].depth < node.depth) {
             string += whitespace.repeat(width - node.depth)
         }
-        string += ` ${nodeArr[i].name} `
+        string += ` ${nodeArr[i].data} `
         if (node.left) {
             lines += "/ "
         }
@@ -71,4 +71,40 @@ function collectNodes(root) {
         }
     }
     return print
+}
+
+function find(node, data) {
+    if (!node) {
+        return node
+    } else if (node.data === data) {
+        return node
+    } else {
+        let newNode = find(node.left, data)
+        if (!newNode) {
+            newNode = find(node.right, data)
+        }
+        return newNode
+    }
+}
+
+function bfind(node, data) {
+    if (!node) {
+        return node
+    } else if (node.data === data) {
+        return node
+    } else {
+        if (data < node.data) {
+            return bfind(node.left, data)
+        } else {
+            return bfind(node.right, data)
+        }
+    }
+}
+
+function insert(node, value) {
+    if (value < node.data) {
+        node.left ? insert(node.left, value) : node.left = makeNode(value)
+    } else if (value > node.data) {
+        node.right ? insert(node.right, value) : node.right = makeNode(value)
+    }
 }
