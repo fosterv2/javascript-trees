@@ -1,7 +1,7 @@
-const d = { data: 'd', left: null, right: null }
-const e = { data: 'e', left: null, right: null }
-const f = { data: 'f', left: null, right: null }
-const g = { data: 'g', left: null, right: null }
+const d = { data: 'd', left: undefined, right: undefined }
+const e = { data: 'e', left: undefined, right: undefined }
+const f = { data: 'f', left: undefined, right: undefined }
+const g = { data: 'g', left: undefined, right: undefined }
 const b = { data: 'b', left: d, right: e }
 const c = { data: 'c', left: f, right: g }
 const a = { data: 'a', left: b, right: c }
@@ -11,13 +11,13 @@ const a = { data: 'a', left: b, right: c }
 //  /   \    /  \
 // D     E   F   G
 
-const ten = { data: 10, left: null, right: null }
-const eight = { data: 8, left: null, right: null }
-const one = { data: 1, left: null, right: null }
+const ten = { data: 10, left: undefined, right: undefined }
+const eight = { data: 8, left: undefined, right: undefined }
+const one = { data: 1, left: undefined, right: undefined }
 const nine = { data: 9, left: eight, right: ten }
-const six = { data: 6, left: null, right: null }
-const four = { data: 4, left: null, right: null }
-const two = { data: 2, left: one, right: null }
+const six = { data: 6, left: undefined, right: undefined }
+const four = { data: 4, left: undefined, right: undefined }
+const two = { data: 2, left: one, right: undefined }
 const seven = { data: 7, left: six, right: nine }
 const three = { data: 3, left: two, right: four }
 const five = { data: 5, left: three, right: seven }

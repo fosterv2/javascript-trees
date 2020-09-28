@@ -59,7 +59,7 @@ function collectNodes(root) {
     const queue = [root]
     root["depth"] = 0
     while (queue.length > 0) {
-        node = queue.shift()
+        let node = queue.shift()
         print.push(node)
         if (node.left) {
             node.left["depth"] = node.depth + 1
