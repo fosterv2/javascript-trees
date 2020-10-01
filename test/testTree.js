@@ -1,23 +1,27 @@
 const { expect } = require('chai')
 
 describe('Trees', function () {
-    const d = { data: 'd', left: undefined, right: undefined }
-    const e = { data: 'e', left: undefined, right: undefined }
-    const f = { data: 'f', left: undefined, right: undefined }
-    const g = { data: 'g', left: undefined, right: undefined }
-    const b = { data: 'b', left: d, right: e }
-    const c = { data: 'c', left: f, right: g }
-    const a = { data: 'a', left: b, right: c }
+    let a, b, c, d, e, f, g, two, three, four, five, seven, eight, nine, ten
 
-    const ten = { data: 10, left: undefined, right: undefined }
-    const eight = { data: 8, left: undefined, right: undefined }
-    const nine = { data: 9, left: eight, right: ten }
-    const four = { data: 4, left: undefined, right: undefined }
-    const two = { data: 2, left: undefined, right: undefined }
-    const seven = { data: 7, left: undefined, right: nine }
-    const three = { data: 3, left: two, right: four }
-    const five = { data: 5, left: three, right: seven }
+    beforeEach(function () {
+        d = { data: 'd', left: undefined, right: undefined }
+        e = { data: 'e', left: undefined, right: undefined }
+        f = { data: 'f', left: undefined, right: undefined }
+        g = { data: 'g', left: undefined, right: undefined }
+        b = { data: 'b', left: d, right: e }
+        c = { data: 'c', left: f, right: g }
+        a = { data: 'a', left: b, right: c }
 
+        ten = { data: 10, left: undefined, right: undefined }
+        eight = { data: 8, left: undefined, right: undefined }
+        nine = { data: 9, left: eight, right: ten }
+        four = { data: 4, left: undefined, right: undefined }
+        two = { data: 2, left: undefined, right: undefined }
+        seven = { data: 7, left: undefined, right: nine }
+        three = { data: 3, left: two, right: four }
+        five = { data: 5, left: three, right: seven }
+    })
+    
     describe('#makeNode()', function () {
         it('makes a node when given a data, left, and right', function () {
             expect(makeNode('A', { data: 'B' }, { data: 'C' })).to.deep.equal({ data: 'A', left: { data: 'B' }, right: { data: 'C' } })
