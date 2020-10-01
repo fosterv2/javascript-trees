@@ -1,6 +1,23 @@
 const { expect } = require('chai')
 
 describe('Trees', function () {
+    const d = { data: 'd', left: undefined, right: undefined }
+    const e = { data: 'e', left: undefined, right: undefined }
+    const f = { data: 'f', left: undefined, right: undefined }
+    const g = { data: 'g', left: undefined, right: undefined }
+    const b = { data: 'b', left: d, right: e }
+    const c = { data: 'c', left: f, right: g }
+    const a = { data: 'a', left: b, right: c }
+
+    const ten = { data: 10, left: undefined, right: undefined }
+    const eight = { data: 8, left: undefined, right: undefined }
+    const nine = { data: 9, left: eight, right: ten }
+    const four = { data: 4, left: undefined, right: undefined }
+    const two = { data: 2, left: undefined, right: undefined }
+    const seven = { data: 7, left: undefined, right: nine }
+    const three = { data: 3, left: two, right: four }
+    const five = { data: 5, left: three, right: seven }
+
     describe('#makeNode()', function () {
         it('makes a node when given a data, left, and right', function () {
             expect(makeNode('A', { data: 'B' }, { data: 'C' })).to.deep.equal({ data: 'A', left: { data: 'B' }, right: { data: 'C' } })
@@ -24,14 +41,6 @@ describe('Trees', function () {
     })
 
     describe('#collectNodes', function () {
-        const d = { data: 'd', left: undefined, right: undefined }
-        const e = { data: 'e', left: undefined, right: undefined }
-        const f = { data: 'f', left: undefined, right: undefined }
-        const g = { data: 'g', left: undefined, right: undefined }
-        const b = { data: 'b', left: d, right: e }
-        const c = { data: 'c', left: f, right: g }
-        const a = { data: 'a', left: b, right: c }
-
         it('collects the nodes of the tree into an array starting with the given root', function () {
             const nodeArr = collectNodes(a)
             expect(nodeArr[0]).to.equal(a)
@@ -50,14 +59,6 @@ describe('Trees', function () {
     })
 
     describe('#find', function () {
-        const d = { data: 'd', left: undefined, right: undefined }
-        const e = { data: 'e', left: undefined, right: undefined }
-        const f = { data: 'f', left: undefined, right: undefined }
-        const g = { data: 'g', left: undefined, right: undefined }
-        const b = { data: 'b', left: d, right: e }
-        const c = { data: 'c', left: f, right: g }
-        const a = { data: 'a', left: b, right: c }
-
         it('searches through the tree and returns the node with the given data', function () {
             expect(find(a, "b")).to.equal(b)
             expect(find(a, "a")).to.equal(a)
@@ -69,17 +70,6 @@ describe('Trees', function () {
     })
 
     describe('#bfind', function () {
-        const ten = { data: 10, left: undefined, right: undefined }
-        const eight = { data: 8, left: undefined, right: undefined }
-        const one = { data: 1, left: undefined, right: undefined }
-        const nine = { data: 9, left: eight, right: ten }
-        const six = { data: 6, left: undefined, right: undefined }
-        const four = { data: 4, left: undefined, right: undefined }
-        const two = { data: 2, left: one, right: undefined }
-        const seven = { data: 7, left: six, right: nine }
-        const three = { data: 3, left: two, right: four }
-        const five = { data: 5, left: three, right: seven }
-
         it('searches through the tree using binary search and returns the node with the given data', function () {
             expect(find(five, 2)).to.equal(two)
             expect(find(seven, 8)).to.equal(eight)
@@ -91,15 +81,6 @@ describe('Trees', function () {
     })
 
     describe('#insert', function () {
-        const ten = { data: 10, left: undefined, right: undefined }
-        const eight = { data: 8, left: undefined, right: undefined }
-        const nine = { data: 9, left: eight, right: ten }
-        const four = { data: 4, left: undefined, right: undefined }
-        const two = { data: 2, left: undefined, right: undefined }
-        const seven = { data: 7, left: undefined, right: nine }
-        const three = { data: 3, left: two, right: four }
-        const five = { data: 5, left: three, right: seven }
-
         it("inserts a new node with the given data (that's less than any in the tree) in the correct place", function () {
             insert(five, 1)
             expect(two.left).to.deep.equal({ data: 1, left: undefined, right: undefined })
